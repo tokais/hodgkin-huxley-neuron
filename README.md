@@ -22,8 +22,8 @@ from neuron import Neuron
 neuron = Neuron()
 
 # Run simulation with parameters:
-# dt=0.05 ms, t0=0 ms, tf=50 ms, V0=-50 mV, I0=10 μA/cm²
-t, y = neuron.simulate(dt=0.05, t0=0., tf=50., V0=-50., I0=10.)
+# dt=0.05 ms, t0=0 ms, tf=50 ms, V0=-0 mV, I0=oscillating between 0 and 40 μA/cm²
+tt, y = neuron.simulate(.05, 0., 650., 0., lambda t: 0. if (t%200) < 100 else 40.)
 
 # Plot membrane potential
 plt.plot(t, y[:,0])
